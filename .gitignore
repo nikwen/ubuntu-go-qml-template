@@ -1,0 +1,19 @@
+# Folders
+
+bin/
+pkg/
+/click/
+/go-installation/
+/src/gopkg.in/
+
+# Gedit files
+
+*~
+
+# Copied host binary
+
+/ubuntu-go-qml-template
+
+# Ubuntu SDK files
+
+*.goproject.user

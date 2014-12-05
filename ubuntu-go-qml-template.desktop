@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ubuntu-go-qml-template
+Exec=ubuntu-go-qml-template
+Icon=ubuntu-go-qml-template.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+
