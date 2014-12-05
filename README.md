@@ -20,10 +20,10 @@ Now it comes to setting up the chroot. Clone the git repository and run the chro
 ```
 git clone https://github.com/nikwen/ubuntu-go-qml-template.git
 cd ubuntu-go-qml-template
-chroot-scripts/setup-toxcore-chroot.sh
+chroot-scripts/setup-chroot.sh
 ```
 
-Note that it is important to call the `setup-toxcore-chroot.sh` script from the top-level project directory.
+Note that it is important to call the `setup-chroot.sh` script from the top-level project directory.
 
 These commands will create a new click chroot or update an already existing one with the required build dependencies. Afterwards, it will install version 1.3.3 of Go inside the project directory, as it is required for cross-compiling the Go QML package. (Don't worry. The system will not use this one by default. Other projects will still use the `golang` package installed via `apt-get install golang`.)
 
