@@ -37,13 +37,13 @@ Installing the project on your Ubuntu Phone:
 
 If you want to install the project on your Ubuntu Phone, you just need to run the `install-on-device.sh` script. It will build the project using the `build-in-chroot.sh` script, push the generated click package to your device using adb and install it using `pkcon install-local`.
 
+About using this template:
+--------------------------
+
+This software is released under the [ISC license](http://choosealicense.com/licenses/isc/), a simple and permissive one which allows you to reuse this code in free and paid software projects alike, without the need to share your source code.
+I would be very pleased if you add a link to this project to your "About" page and/or let me know that someone is actually using it, but it is, of course, no requirement to do so.
+
 Big thanks to:
 --------------
 
  * [Dimitri John Ledkov](https://github.com/xnox "Github profile") for publishing [a great blog post](http://blog.surgut.co.uk/2014/06/cross-compile-go-code-including-cgo.html "cross-compile go code, including cgo") on Go cross-compilation using Ubuntu click chroots. Thank you very, very much for getting me started!
-
-About using this template:
---------------------------
-
-This software is released under the [ICS license](http://choosealicense.com/licenses/isc/), a simple and permissive one which allows you to reuse this code in free and paid software projects alike, without the need to share your source code.
-I would be very pleased if you add a link to this project to your "About" page and/or let me know that someone is actually using it, but it is, of course, no requirement to do so.
