@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
-# This script will adopt the ubuntu-go-qml-template to 
-# it will 
+#
+# This script will adopt the ubuntu-go-qml-template to your app
+# it will rename and gsub the according files to fit your setup
 
 require 'optparse'
 require 'ostruct'
