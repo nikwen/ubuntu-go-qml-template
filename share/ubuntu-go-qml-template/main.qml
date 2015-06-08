@@ -10,7 +10,7 @@ MainView {
     objectName: "mainView"
 
     // Note! applicationName needs to match the "name" field of the click manifest
-    applicationName: "com.ubuntu.developer.nikwen.ubuntu-go-qml-template"
+    applicationName: "ubuntu-go-qml-template.nikwen"
 
     /*
      This property enables the application to change orientation
@@ -52,4 +52,3 @@ MainView {
         }
     }
 }
-
