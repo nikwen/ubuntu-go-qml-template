@@ -58,6 +58,7 @@ class TemplateSetup
               "mandatory maintainer's developer-namespace - \n
               see: https://developer.ubuntu.com/en/publish/packaging-click-apps/") do |n|
         @options.namespace = n
+
       end
 
       opts.on_tail("-h", "--help", "Show this message") do
@@ -117,8 +118,8 @@ class TemplateSetup
       changed = text.gsub(/ubuntu-go-qml-template/, @options.name)
       if fname == 'manifest.json'
         changed = changed.gsub("Niklas Wenzel <nikwen.developer@gmail.com>", "#{@options.author} <#{@options.email}>")
-        changed = changed.gsub("nikwen", @options.namespace)
       end
+      changed = changed.gsub("nikwen", @options.namespace)
       pp changed if @options.verbose
       File.open(fname, "w") {|f| f.puts changed }
     end
