@@ -75,7 +75,7 @@ class TemplateSetup
   end
 
   def check_options
-    if @options.name.nil? || @options.email.nil? || @options.author.nil? || @options.developer.nil?
+    if @options.name.nil? || @options.email.nil? || @options.author.nil? || @options.namespace.nil?
       puts @options.op
       exit 1
     end
