@@ -115,13 +115,11 @@ class TemplateSetup
     file_names.each do |fname|
       raise "Error - seems like no fresh checkout of ubuntu-go-qml-template" unless File.exists?(fname)
       text = File.read(fname)
-      changed = text.gsub(/ubuntu-go-qml-template/, @options.name)
-      if fname == 'manifest.json'
-        changed = changed.gsub("Niklas Wenzel <nikwen.developer@gmail.com>", "#{@options.author} <#{@options.email}>")
-      end
-      changed = changed.gsub("nikwen", @options.namespace)
-      pp changed if @options.verbose
-      File.open(fname, "w") {|f| f.puts changed }
+      text = text.gsub(/ubuntu-go-qml-template\.nikwen/, "#{@options.name}.#{@options.namespace}")
+             .gsub("Niklas Wenzel <nikwen.developer@gmail.com>", "#{@options.author} <#{@options.email}>")
+             .gsub(/ubuntu-go-qml-template/, @options.name)
+      pp text if @options.verbose
+      File.open(fname, "w") {|f| f.puts text }
     end
 
   end
