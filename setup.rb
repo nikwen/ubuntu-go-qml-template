@@ -38,17 +38,26 @@ class TemplateSetup
     op = OptionParser.new do |opts|
       opts.banner = "Usage: setup.rb [options]"
      
-      opts.on("-v", "--verbose", "Be somhow verbose...") do |v|
+      opts.on("-v", "--verbose", 
+              "Be somehow verbose...") do |v|
         @options.verbose = true
       end
-      opts.on("-n APPNAME", "--name APPNAME", "The mandatory name of your app" ) do |n|
+      opts.on("-n APPNAME", "--name APPNAME", 
+              "The mandatory name of your app" ) do |n|
         @options.name = n
       end
-      opts.on("-e EMAIL", "--email EMAIL", "mandatory maintainer's email - probably yours...") do |m|
+      opts.on("-e EMAIL", "--email EMAIL", 
+              "mandatory maintainer's email - probably yours...") do |m|
         @options.email = m
       end
-      opts.on("-a AUTHOR", "--author AUTHOR", "mandatory maintainer's name - guess its yours also..") do |a|
+      opts.on("-a AUTHOR", "--author AUTHOR", 
+              "mandatory maintainer's name - guess its yours also..") do |a|
         @options.author = a
+      end
+      opts.on("-d DEVELOPER", "--developer DEVELOPER", 
+              "mandatory maintainer's developer-namespace - \n
+              see: https://developer.ubuntu.com/en/publish/packaging-click-apps/") do |n|
+        @options.namespace = n
       end
 
       opts.on_tail("-h", "--help", "Show this message") do
@@ -65,7 +74,7 @@ class TemplateSetup
   end
 
   def check_options
-    if @options.name.nil? || @options.email.nil? || @options.author.nil?
+    if @options.name.nil? || @options.email.nil? || @options.author.nil? || @options.developer.nil?
       puts @options.op
       exit 1
     end
@@ -107,7 +116,8 @@ class TemplateSetup
       text = File.read(fname)
       changed = text.gsub(/ubuntu-go-qml-template/, @options.name)
       if fname == 'manifest.json'
-        changed = changed.gsub(/Niklas Wenzel <nikwen.developer@gmail.com>/, "#{@options.author} <#{@options.email}>")
+        changed = changed.gsub("Niklas Wenzel <nikwen.developer@gmail.com>", "#{@options.author} <#{@options.email}>")
+        changed = changed.gsub("nikwen", @options.namespace)
       end
       pp changed if @options.verbose
       File.open(fname, "w") {|f| f.puts changed }
