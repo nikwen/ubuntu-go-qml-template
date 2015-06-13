@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 #
-# This script will adopt the ubuntu-go-qml-template to your app
-# it will rename and gsub the according files to fit your setup
+# This script will adopt the ubuntu-go-qml-template for your app.
+# It will rename and gsub the according files to fit your setup.
 
 require 'optparse'
 require 'ostruct'
@@ -11,7 +11,7 @@ require 'pp'
 class TemplateSetup
 
   def initialize(argv)
-    op = option_parser 
+    op = option_parser
     op.parse!(argv)
     check_options
   end
@@ -24,8 +24,8 @@ class TemplateSetup
 
   def process
     print_steps
-    puts "working with name '#{@options.name}'"
-    # beware! - ordering matters!
+    puts "Working with name '#{@options.name}'"
+    # Beware! – The order is important!
     gsub_files
     rename_dirs
     rename_files
@@ -37,26 +37,26 @@ class TemplateSetup
 
     op = OptionParser.new do |opts|
       opts.banner = "Usage: setup.rb [options]"
-     
-      opts.on("-v", "--verbose", 
-              "Be somehow verbose...") do |v|
+
+      opts.on("-v", "--verbose",
+              "Verbose output") do |v|
         @options.verbose = true
       end
-      opts.on("-n APPNAME", "--name APPNAME", 
-              "The mandatory name of your app" ) do |n|
+      opts.on("-n APPNAME", "--name APPNAME",
+              "The name of your app (mandatory)" ) do |n|
         @options.name = n
       end
-      opts.on("-e EMAIL", "--email EMAIL", 
-              "mandatory maintainer's email - probably yours...") do |m|
-        @options.email = m
-      end
-      opts.on("-a AUTHOR", "--author AUTHOR", 
-              "mandatory maintainer's name - guess its yours also..") do |a|
+      opts.on("-a AUTHOR", "--author AUTHOR",
+              "Your name (mandatory)") do |a|
         @options.author = a
       end
-      opts.on("-d DEVELOPER", "--developer DEVELOPER", 
-              "mandatory maintainer's developer-namespace - \n
-              see: https://developer.ubuntu.com/en/publish/packaging-click-apps/") do |n|
+      opts.on("-e EMAIL", "--email EMAIL",
+              "Your email (mandatory)") do |m|
+        @options.email = m
+      end
+      opts.on("-d DEVELOPER", "--developer DEVELOPER",
+              "Your developer namespace (mandatory) – see
+                                     https://developer.ubuntu.com/en/publish/") do |n|
         @options.namespace = n
 
       end
@@ -65,7 +65,7 @@ class TemplateSetup
         @options.verbose = true
         @options.name = "[APPNAME]"
         puts opts
-        puts "######################\n"
+        puts "\n#######################\n\n"
         print_steps
         exit
       end
@@ -83,7 +83,7 @@ class TemplateSetup
 
   def print_steps
     return unless @options.verbose
-    puts "Steps about to be done:\n "
+    puts "Steps about to be done:\n"
     puts " -> adopt run.sh"
     puts " -> adopt build.sh"
     puts " -> adopt build-in-chroot.sh"
@@ -113,7 +113,7 @@ class TemplateSetup
                   ]
 
     file_names.each do |fname|
-      raise "Error - seems like no fresh checkout of ubuntu-go-qml-template" unless File.exists?(fname)
+      raise "Error – looks like this is no fresh checkout of ubuntu-go-qml-template" unless File.exists?(fname)
       text = File.read(fname)
       text = text.gsub(/ubuntu-go-qml-template\.nikwen/, "#{@options.name}.#{@options.namespace}")
              .gsub("Niklas Wenzel <nikwen.developer@gmail.com>", "#{@options.author} <#{@options.email}>")
@@ -131,18 +131,18 @@ class TemplateSetup
   end
 
   def rename_files
-    fnames = %w{ ubuntu-go-qml-template.apparmor 
-        ubuntu-go-qml-template.desktop 
+    fnames = %w{ ubuntu-go-qml-template.apparmor
+        ubuntu-go-qml-template.desktop
         ubuntu-go-qml-template.goproject
         ubuntu-go-qml-template.png }
 
     fnames.each do |fname|
-      File.rename fname, "#{@options.name}.#{ fname.split('.')[1]}"  
+      File.rename fname, "#{@options.name}.#{ fname.split('.')[1]}"
     end
   end
 
   def finish
-    puts "Finished! Yai! - now continue with running: 'chroot-scripts/setup-chroot.sh'"
+    puts "Finished! Yay! – Now continue with running: 'chroot-scripts/setup-chroot.sh'"
   end
 
 end
