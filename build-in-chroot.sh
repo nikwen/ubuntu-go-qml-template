@@ -18,9 +18,9 @@ find $CLICK_DIR/.. -name "*.click" -exec rm {} \;
 
 # Build the project
 
-click chroot -a armhf -f ubuntu-sdk-14.10 -s utopic run CGO_ENABLED=1 GOARCH=arm GOARM=7 PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig GOPATH=$DIR GOROOT=$GO_DIR CC=arm-linux-gnueabihf-gcc $GO_BIN_DIR/go get -d -u gopkg.in/qml.v1
+click chroot -a armhf -f ubuntu-sdk-15.04 -s vivid run CGO_ENABLED=1 GOARCH=arm GOARM=7 PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig GOPATH=$DIR GOROOT=$GO_DIR CC=arm-linux-gnueabihf-gcc $GO_BIN_DIR/go get -d -u gopkg.in/qml.v1
 
-click chroot -a armhf -f ubuntu-sdk-14.10 -s utopic run CGO_ENABLED=1 GOARCH=arm GOARM=7 PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig GOPATH=$DIR GOROOT=$GO_DIR CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ $GO_BIN_DIR/go install -ldflags '-extld=arm-linux-gnueabihf-gcc' -v -x ubuntu-go-qml-template
+click chroot -a armhf -f ubuntu-sdk-15.04 -s vivid run CGO_ENABLED=1 GOARCH=arm GOARM=7 PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig GOPATH=$DIR GOROOT=$GO_DIR CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ $GO_BIN_DIR/go install -ldflags '-extld=arm-linux-gnueabihf-gcc' -v -x ubuntu-go-qml-template
 
 # Copy files into click directory
 
