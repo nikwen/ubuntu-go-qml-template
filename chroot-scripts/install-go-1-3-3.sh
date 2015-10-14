@@ -32,10 +32,10 @@ echo "====================================="
 echo
 
 if [ $ARCH = "x86_64" ]; then
-	sudo click chroot -a armhf -f ubuntu-sdk-14.10 -s utopic maint tar -C $INSTALL_DIR -xzf $INSTALL_DIR/go1.3.3.linux-amd64.tar.gz
+	sudo click chroot -a armhf -f ubuntu-sdk-15.04 -s vivid maint tar -C $INSTALL_DIR -xzf $INSTALL_DIR/go1.3.3.linux-amd64.tar.gz
 	rm $INSTALL_DIR/go1.3.3.linux-amd64.tar.gz
 else
-	sudo click chroot -a armhf -f ubuntu-sdk-14.10 -s utopic maint tar -C $INSTALL_DIR -xzf $INSTALL_DIR/go1.3.3.linux-386.tar.gz
+	sudo click chroot -a armhf -f ubuntu-sdk-15.04 -s vivid maint tar -C $INSTALL_DIR -xzf $INSTALL_DIR/go1.3.3.linux-386.tar.gz
 	rm $INSTALL_DIR/go1.3.3.linux-386.tar.gz
 fi
 

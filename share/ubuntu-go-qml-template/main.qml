@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import Ubuntu.Components 1.1
+import Ubuntu.Components 1.2
 
 /*!
     \brief MainView with a Label and Button elements.
@@ -17,9 +17,6 @@ MainView {
      when the device is rotated. The default is false.
     */
     //automaticOrientation: true
-
-    // Removes the old toolbar and enables new features of the new header.
-    useDeprecatedToolbar: false
 
     width: units.gu(100)
     height: units.gu(75)
